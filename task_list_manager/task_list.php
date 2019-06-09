@@ -25,7 +25,7 @@
   <!-- Part 2: The Tasks -->
   <h2>Tasks</h2>
   <?php if (count($task_list) === 0) : ?>
-    <p>There are not task in the task list.</p>
+    <p>There are no tasks in the task list.</p>
   <?php else : ?>
     <ul>
       <?php foreach ($task_list as $id => $task) : ?>
@@ -33,24 +33,44 @@
       <?php endforeach; ?>
     </ul>
   <?php endif; ?>
+  <br>
 
   <!-- Part 3: The Add Form -->
   <h2>Add Task</h2>
-  <?php if  : ?>
-    <ul>
-      <?php foreach  : ?>
-        <li><?php echo  ?></li>
-      <?php endforeach; ?>
-    </ul>
-  <?php endif; ?>
+  <form action="." method="post">
+    <?php foreach ($task_list as $task)  : ?>
+      <input type="hidden" name="tasklist[]"
+             value="<?php echo htmlspecialchars($task) ?>">
+    <?php endforeach; ?>
+    <input type="hidden" name="action" value="add">
+    <label>Task:</label>
+    <input type="text" name="task"><br>
+    <label>&nbsp;</label>
+    <input type="submit" value="Add Task"><br>
+  </form>
+  <br>
 
   <!-- Part 4: The Delete Form -->
-  <?php if  : ?>
-    <ul>
-      <?php foreach  : ?>
-        <li><?php echo  ?></li>
+  <?php if (count($task_list) > 0) : ?>
+    <h2>Delete Task</h2>
+    <form action="." method="post">
+      <?php foreach ($task_list as $task) : ?>
+        <input type="hidden" name="tasklist[]"
+               value="<?php echo htmlspecialchars($task) ?>">
       <?php endforeach; ?>
-    </ul>
+      <input type="hidden" name="action" value="delete">
+      <label>Task:</label>
+      <select name="taskid">
+        <?php foreach ($task_list as $id => $task) : ?>
+          <option value="<?php echo $id; ?>">
+            <?php echo htmlspecialchars($task); ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
+      <br>
+      <label>&nbsp;</label>
+      <input type="submit" value="Delete Task">
+    </form>
   <?php endif; ?>
 </main>
 </body>
