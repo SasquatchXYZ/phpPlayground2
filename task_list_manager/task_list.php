@@ -23,8 +23,35 @@
   <?php endif; ?>
 
   <!-- Part 2: The Tasks -->
+  <h2>Tasks</h2>
+  <?php if (count($task_list) === 0) : ?>
+    <p>There are not task in the task list.</p>
+  <?php else : ?>
+    <ul>
+      <?php foreach ($task_list as $id => $task) : ?>
+        <li><?php echo $id + 1 . '. ' . htmlspecialchars($task) ?></li>
+      <?php endforeach; ?>
+    </ul>
+  <?php endif; ?>
+
   <!-- Part 3: The Add Form -->
+  <h2>Add Task</h2>
+  <?php if  : ?>
+    <ul>
+      <?php foreach  : ?>
+        <li><?php echo  ?></li>
+      <?php endforeach; ?>
+    </ul>
+  <?php endif; ?>
+
   <!-- Part 4: The Delete Form -->
+  <?php if  : ?>
+    <ul>
+      <?php foreach  : ?>
+        <li><?php echo  ?></li>
+      <?php endforeach; ?>
+    </ul>
+  <?php endif; ?>
 </main>
 </body>
 </html>
